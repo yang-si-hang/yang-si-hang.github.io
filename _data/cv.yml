@@ -7,8 +7,8 @@
     #   value: 14th March 1879
     - name: Languages
       value: Chinese(native), English(Intermediate)
-    - name: Google Scolar
-      value: https://scholar.google.com/citations?user=4R-w91MAAAAJ&hl=zh-CN&oi=ao
+    - name: Acedmic sites
+      value: <a href="https://scholar.google.com/citations?user=4R-w91MAAAAJ&hl=zh-CN&oi=ao">Google Scolar</a>
 
 - title: Education
   type: time_table
