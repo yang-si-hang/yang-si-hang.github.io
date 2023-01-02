@@ -1,0 +1,22 @@
+How to add new blog in the site?
+```
+Add a ".md" file to the folder "_posts". You can reference the folder "_postss".
+```
+
+How to add services in the site?
+```
+1. Change the "services" to "true" in "about.md".
+2. Edit the "service.html" in folder "_includes".
+```
+
+How to add new paper in the site?
+```
+1. Add the paper year in "_pages/publications".
+2. Add the paper bib in "_bibliography/my_paper.bib". You can reference the file "paper.bib".
+3. Change the year in "_includes/latest_papers.html"
+```
+
+How to add projects in the site?
+```
+Add files in "_projects".
+```
