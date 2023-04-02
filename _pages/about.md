@@ -2,7 +2,7 @@
 layout: about
 title: About
 permalink: /
-subtitle1: <a href='#'>Huazhong University of Science and Technology(Hust)</a>, Wuhan, China. <br/>
+subtitle1: <a href='http://english.hust.edu.cn/'>Huazhong University of Science and Technology(Hust)</a>, Wuhan, China. <br/>
 subtitle2: <a href='mailto:sihang@hust.edu.cn'>sihang@hust.edu.cn</a> #. Moto. Etc.
 
 profile:
