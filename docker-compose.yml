@@ -19,3 +19,5 @@ services:
       - .:/srv/jekyll
     environment:
       - JEKYLL_ENV=development
+      - http_proxy=http://192.168.50.109:7890   # 记得换成你的局域网IP
+      - https_proxy=http://192.168.50.109:7890  # 记得换成你的局域网IP
