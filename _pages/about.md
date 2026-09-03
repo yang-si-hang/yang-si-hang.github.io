@@ -30,7 +30,20 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-A Ph.D student interested in robotics.
+I am a Ph.D. candidate in robotics, focusing on robot learning, vision-language-action models, and deformable object manipulation. My research combines imitation learning, differentiable simulation, model-based control, and real-world robotic system integration. Recently, I have been working on VLA post-training and continuous robot execution, with the goal of developing robust and generalizable policies for complex manipulation tasks.
+
+<h2>
+  <a href="{{ '/projects/' | relative_url }}" style="color: inherit">projects</a>
+</h2>
+
+{% assign selected_projects = site.projects | where: "selected", true | sort: "importance" %}
+<div class="projects">
+  <div class="row row-cols-1 row-cols-md-3">
+    {% for project in selected_projects %}
+      {% include projects.liquid %}
+    {% endfor %}
+  </div>
+</div>
 
 <!-- Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
 
