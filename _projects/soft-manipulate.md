@@ -12,6 +12,8 @@ category: work
 
 This project investigates model-based manipulation of deformable soft tissue under large deformation and uncertain dynamics. I developed a differentiable soft-tissue simulator based on Projective Dynamics with GPU acceleration and integrated it into an MPC framework for closed-loop shape control. The project also explores adaptive control and manipulation-point optimization to improve robustness across different grasping configurations.
 
+## Demo
+
 <div class="row">
   <div class="col-sm mt-3 mt-md-0">·
     {% include video.liquid

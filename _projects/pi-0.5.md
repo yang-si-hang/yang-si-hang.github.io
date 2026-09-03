@@ -14,6 +14,8 @@ This project focuses on adapting vision-language-action models to real-world rob
 
 ## Demo
 
+Pick and Place task (speed x3)
+
 <div class="row">
   <div class="col-sm mt-3 mt-md-0">
     {% include video.liquid
