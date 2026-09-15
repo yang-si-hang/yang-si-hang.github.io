@@ -2,7 +2,7 @@
 layout: page
 title: Soft Tissue Cutting
 description:
-img: assets/img/projectis/tissue-cut.png
+img: assets/img/projects/tissue-cut.png
 importance: 1
 category: work
 selected: true

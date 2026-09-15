@@ -2,7 +2,7 @@
 layout: page
 title: Pi0.5 Post-train
 description:
-img: assets/img/projectis/pi0.5-post-train.png
+img: assets/img/projects/pi0.5-post-train.png
 importance: 1
 category: personal
 selected: true
@@ -14,7 +14,24 @@ This project focuses on adapting vision-language-action models to real-world rob
 
 ## Demo
 
-Pick and Place task (speed x3)
+#### Plug RJ-45 task (original speed)
+
+The policy was trained with **Knowledge Insulation**, which substantially outperformed standard LoRA fine-tuning and achieved a success rate of 11/16.
+
+<div class="row">
+  <div class="col-sm mt-3 mt-md-0">
+    {% include video.liquid
+       path="assets/video/projects/plug-rj45-faststart.mp4"
+       class="img-fluid rounded z-depth-1"
+       controls=true
+    %}
+  </div>
+</div>
+
+
+#### Pick and Place task (speed x3)
+
+Implemented train-time RTC for the pick-and-place task.
 
 <div class="row">
   <div class="col-sm mt-3 mt-md-0">

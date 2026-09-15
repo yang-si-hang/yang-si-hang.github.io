@@ -2,7 +2,7 @@
 layout: page
 title: Soft tissue Manipulation
 description:
-img: assets/img/projectis/soft-object-sim.png
+img: assets/img/projects/soft-object-sim.png
 selected: false
 importance: 2
 category: work
