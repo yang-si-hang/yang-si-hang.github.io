@@ -30,7 +30,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/projects/";
           },
-        },{id: "books-the-godfather",
+        },{id: "post-implementing-knowledge-insulation-in-openpi",
+        
+          title: "Implementing Knowledge Insulation in OpenPI",
+        
+        description: "How Knowledge Insulation separates FAST and flow-matching gradients in OpenPI, and why sharing the VLM forward changes the training objective.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/openpi-knowledge-insulation/";
+          
+        },
+      },{id: "books-the-godfather",
           title: 'The Godfather',
           description: "",
           section: "Books",handler: () => {
