@@ -16,12 +16,24 @@ This project focuses on adapting vision-language-action models to real-world rob
 
 #### Plug RJ-45 task (original speed)
 
-The policy was trained with **Knowledge Insulation**, which substantially outperformed standard LoRA fine-tuning and achieved a success rate of 11/16.
+The policy was trained with **Knowledge Insulation**, which substantially outperformed standard LoRA fine-tuning and achieved a success rate of 16/25.
 
 <div class="row">
   <div class="col-sm mt-3 mt-md-0">
     {% include video.liquid
-       path="assets/video/projects/plug-rj45-faststart.mp4"
+       path="assets/video/projects/plug-rj45-fast.mp4"
+       class="img-fluid rounded z-depth-1"
+       controls=true
+    %}
+  </div>
+</div>
+
+Failure case:
+
+<div class="row">
+  <div class="col-sm mt-3 mt-md-0">
+    {% include video.liquid
+       path="assets/video/projects/plug-rj45-fail-fast.mp4"
        class="img-fluid rounded z-depth-1"
        controls=true
     %}
