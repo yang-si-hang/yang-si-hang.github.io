@@ -30,7 +30,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/projects/";
           },
-        },{id: "post-implementing-knowledge-insulation-in-openpi",
+        },{id: "post-rpent-deepseek-让机械臂在仿真中学会抓取-堆叠与复用经验",
+        
+          title: "RPent + DeepSeek：让机械臂在仿真中学会抓取、堆叠与复用经验",
+        
+        description: "A look at RPent and DeepSeek controlling a robot arm in MotrixSim to grasp and stack blocks, reuse operating experience through memory, and complete 10 randomized layouts while revealing challenges in reliable learning and efficient reasoning.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/rpent-deepseek-colorblock/";
+          
+        },
+      },{id: "post-implementing-knowledge-insulation-in-openpi",
         
           title: "Implementing Knowledge Insulation in OpenPI",
         
