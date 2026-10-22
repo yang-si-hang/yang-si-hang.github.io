@@ -30,7 +30,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/projects/";
           },
-        },{id: "post-rpent-deepseek-让机械臂在仿真中学会抓取-堆叠与复用经验",
+        },{id: "post-把不同频率的数据流写进同一个-mcap",
+        
+          title: "把不同频率的数据流写进同一个 MCAP",
+        
+        description: "用独立采集节拍、事件时间戳和单一写入器，将图像、机器人状态与控制指令可靠地录制到同一份 MCAP 文件。",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/mcap-collect/";
+          
+        },
+      },{id: "post-rpent-deepseek-让机械臂在仿真中学会抓取-堆叠与复用经验",
         
           title: "RPent + DeepSeek：让机械臂在仿真中学会抓取、堆叠与复用经验",
         
