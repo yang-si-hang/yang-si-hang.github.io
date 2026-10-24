@@ -4,7 +4,7 @@ layout: post
 title: Implementing Knowledge Insulation in OpenPI
 date: 2026-09-20 16:32:00 +0800
 description: How Knowledge Insulation separates FAST and flow-matching gradients in OpenPI, and why sharing the VLM forward changes the training objective.
-tags: 
+tags:
 categories: tech
 ---
 

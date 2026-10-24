@@ -4,7 +4,7 @@ layout: post
 title: RPent + DeepSeek：让机械臂在仿真中学会抓取、堆叠与复用经验
 date: 2026-10-21 16:32:00 +0800
 description: A look at RPent and DeepSeek controlling a robot arm in MotrixSim to grasp and stack blocks, reuse operating experience through memory, and complete 10 randomized layouts while revealing challenges in reliable learning and efficient reasoning.
-tags: 
+tags:
 categories: tech
 ---
 
@@ -20,11 +20,11 @@ categories: tech
 
 ![任务开始：桌面上的橙块、黄块与蓝块]({{ '/assets/img/posts/seed-511616025-initial.png' | relative_url }})
 
-*初始布局。系统需要从图像中定位橙块和黄块，再计算抓取与放置位置。*
+_初始布局。系统需要从图像中定位橙块和黄块，再计算抓取与放置位置。_
 
 ![任务结束：橙块堆叠在黄块上，夹爪已撤离]({{ '/assets/img/posts/seed-511616025-final.png' | relative_url }})
 
-*任务结束。橙块已堆叠在黄块上，夹爪打开并撤离。*
+_任务结束。橙块已堆叠在黄块上，夹爪打开并撤离。_
 
 完整动作由六次机械臂移动构成：接近橙块、下降抓取、抬升、移动到黄块上方、下降放置、撤离。夹爪在抓取时闭合一次，在放置时打开一次。执行过程中，Agent 还需要判断方块是否随夹爪移动，并在抬升后重新估计持物相对工具中心点（TCP）的偏移。
 
@@ -44,14 +44,14 @@ DeepSeek 使用的模型标识为 `openai-chat:deepseek-flash`，通过 RPent �
 
 主要工具构成了一条“观察—计算—动作—验证”的闭环：
 
-| 工具 | 作用 |
-| --- | --- |
-| `view_env_state` | 获取相机图像、TCP 位姿和夹爪状态 |
-| `segment` | 分割目标，返回可见表面在 base 坐标系中的统计信息 |
-| `view_gripper_geometry` | 计算指定姿态下 finger pad 的位置和范围 |
-| `move_to` | 将 TCP 移动到给定的绝对位置和姿态 |
-| `set_gripper` / `release` | 闭合或打开夹爪 |
-| `finish` | 提交执行结果并保存诊断记录 |
+| 工具                      | 作用                                             |
+| ------------------------- | ------------------------------------------------ |
+| `view_env_state`          | 获取相机图像、TCP 位姿和夹爪状态                 |
+| `segment`                 | 分割目标，返回可见表面在 base 坐标系中的统计信息 |
+| `view_gripper_geometry`   | 计算指定姿态下 finger pad 的位置和范围           |
+| `move_to`                 | 将 TCP 移动到给定的绝对位置和姿态                |
+| `set_gripper` / `release` | 闭合或打开夹爪                                   |
+| `finish`                  | 提交执行结果并保存诊断记录                       |
 
 六条移动指令背后需要完成一系列坐标转换。图像中的目标中心、分割结果的可见表面中点、方块的几何中心和机器人 TCP 分别代表不同的量。Agent 先用视觉结果定位方块，再结合夹爪几何计算 TCP 目标。方块被夹起后，它在夹爪中的实际位置还可能变化，因此放置高度需要根据本次抓取重新估计。
 
@@ -83,18 +83,18 @@ HANDOFF
 
 各部分承担不同职责：
 
-| 功能类别 | Prompt 区块 | 设计目的 |
-| --- | --- | --- |
-| 角色与权限 | `ROLE` | 限定当前任务、可用数据和操作范围 |
-| 坐标契约 | `COORDINATES` | 统一 base 坐标、TCP、四元数顺序及相机外参的含义 |
-| 工具语义 | `TOOLS` | 说明分割、反投影、运动和夹爪返回值分别能证明什么 |
-| 观测复用 | `OBSERVATION REUSE` | 要求复用仍然有效的定位和几何结果，并限制重复测量 |
-| 执行流程 | `WORKFLOW` | 将任务组织为定位、接近、抓取、抬升、放置和验证 |
-| 结束判定 | `COMPLETION` | 区分模型判断与环境成功信号，规定何时调用 `finish` |
-| 经验读取 | `EVALUATION MEMORY` | 读取索引和至多三份相关经验，坐标仍由当前观测确定 |
-| 经验生成 | `EXPLORATION MEMORY` | 允许向当前 inbox 写草稿，要求记录证据、解释和适用限制 |
-| 失败重试 | `EXPLORATION RETRY` / `HANDOFF` | 保存失败证据，在 reset 或新 session 后只改变一个策略 |
-| 当前任务 | `TASK` / `TASK CONSTRAINTS` / `BEGIN` | 注入本次指令、成功条件、动作限制和初始观察要求 |
+| 功能类别   | Prompt 区块                           | 设计目的                                              |
+| ---------- | ------------------------------------- | ----------------------------------------------------- |
+| 角色与权限 | `ROLE`                                | 限定当前任务、可用数据和操作范围                      |
+| 坐标契约   | `COORDINATES`                         | 统一 base 坐标、TCP、四元数顺序及相机外参的含义       |
+| 工具语义   | `TOOLS`                               | 说明分割、反投影、运动和夹爪返回值分别能证明什么      |
+| 观测复用   | `OBSERVATION REUSE`                   | 要求复用仍然有效的定位和几何结果，并限制重复测量      |
+| 执行流程   | `WORKFLOW`                            | 将任务组织为定位、接近、抓取、抬升、放置和验证        |
+| 结束判定   | `COMPLETION`                          | 区分模型判断与环境成功信号，规定何时调用 `finish`     |
+| 经验读取   | `EVALUATION MEMORY`                   | 读取索引和至多三份相关经验，坐标仍由当前观测确定      |
+| 经验生成   | `EXPLORATION MEMORY`                  | 允许向当前 inbox 写草稿，要求记录证据、解释和适用限制 |
+| 失败重试   | `EXPLORATION RETRY` / `HANDOFF`       | 保存失败证据，在 reset 或新 session 后只改变一个策略  |
+| 当前任务   | `TASK` / `TASK CONSTRAINTS` / `BEGIN` | 注入本次指令、成功条件、动作限制和初始观察要求        |
 
 这种分类包含三个层次。第一层是稳定契约：坐标、工具含义和成功信号不随 seed 改变，由 System Prompt 统一维护。第二层是运行变量：User Prompt 在启动时填入任务指令、成功条件、场景和动作约束。第三层是模式权限：探索模式在共享规则之外增加草稿写入、reset 和 session 交接；评测模式沿用相同的坐标与操作流程，并以只读方式使用 memory。
 
@@ -121,27 +121,27 @@ memory 因此提供“如何定位、如何计算、何时复核”的规则；�
 
 批量评测使用 batch seed `2026` 生成 10 个互不相同的布局 seed。每次运行启动独立进程，随机改变方块位置，初始 yaw 保持为零。所有运行读取同一份 memory 快照，并通过 LeRobot 保存两个 RGB 相机、机器人状态和控制参考。
 
-| 配置项 | 设置 |
-| --- | --- |
-| Planner | RPent API planner |
-| 模型 | `openai-chat:deepseek-flash` |
-| 任务数量 | 10 |
-| Batch seed | `2026` |
-| 单次请求上限 | 50 轮 |
-| 渲染模式 | GUI |
-| Memory | 批次开始时固定，同批次保持只读 |
-| 轨迹保存 | 每次运行保存一个 LeRobot episode |
+| 配置项       | 设置                             |
+| ------------ | -------------------------------- |
+| Planner      | RPent API planner                |
+| 模型         | `openai-chat:deepseek-flash`     |
+| 任务数量     | 10                               |
+| Batch seed   | `2026`                           |
+| 单次请求上限 | 50 轮                            |
+| 渲染模式     | GUI                              |
+| Memory       | 批次开始时固定，同批次保持只读   |
+| 轨迹保存     | 每次运行保存一个 LeRobot episode |
 
 批量器在启动时固定 memory 内容并记录哈希，随后逐个运行 seed。10 次任务的汇总结果如下：
 
-| 指标 | 结果 |
-| --- | ---: |
-| 环境判定成功 | 10 / 10 |
-| 正常调用 `finish` 且进程退出码为 0 | 10 / 10 |
-| 平均单次进程耗时 | 199 秒 |
-| 单次进程耗时范围 | 163.5–270.0 秒 |
-| 整批累计进程耗时 | 约 33.2 分钟 |
-| 轨迹数据 | 10 个 episode，共 5,327 帧 |
+| 指标                               |                       结果 |
+| ---------------------------------- | -------------------------: |
+| 环境判定成功                       |                    10 / 10 |
+| 正常调用 `finish` 且进程退出码为 0 |                    10 / 10 |
+| 平均单次进程耗时                   |                     199 秒 |
+| 单次进程耗时范围                   |             163.5–270.0 秒 |
+| 整批累计进程耗时                   |               约 33.2 分钟 |
+| 轨迹数据                           | 10 个 episode，共 5,327 帧 |
 
 10 次运行都采用相同的六次 `move_to` 动作骨架，并且都只闭合一次夹爪、释放一次。保存后的 Parquet 行数与各数据集元信息中的帧数一致。结果表明，在位置发生变化、朝向保持不变的 10 个布局中，RPent、DeepSeek、SAM3 与 MotrixSim 构成的闭环能够稳定完成这项堆叠任务。
 
