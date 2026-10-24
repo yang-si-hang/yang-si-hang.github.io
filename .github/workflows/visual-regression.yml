@@ -36,6 +36,9 @@ on:
 
 jobs:
   visual-regression:
+    # The baseline tag and screenshot parity contract belong to the canonical
+    # starter repo; personalized site forks use their own visual review.
+    if: github.repository == 'alshedivat/al-folio'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:

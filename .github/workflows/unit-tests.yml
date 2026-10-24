@@ -67,6 +67,9 @@ jobs:
         run: npm ci
 
       - name: Run style contract lint 🧷
+        # This contract checks the canonical thin starter. Site forks may
+        # intentionally keep documented local layout and Sass overrides.
+        if: github.repository == 'alshedivat/al-folio'
         run: npm run lint:style-contract
 
       - name: Install build prerequisites 🔧

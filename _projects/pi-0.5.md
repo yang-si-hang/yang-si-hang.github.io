@@ -40,7 +40,6 @@ Failure case:
   </div>
 </div>
 
-
 #### Pick and Place task (speed x3)
 
 Implemented train-time RTC for the pick-and-place task.
