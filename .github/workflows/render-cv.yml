@@ -16,18 +16,28 @@ permissions:
 jobs:
   rendercv:
     name: RenderCV
-    # CV data is intentionally absent until the user supplies a real CV.
-    if: hashFiles('_data/cv.yml', '_data/cv.yaml') != ''
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Check for CV data
+        id: cv_data
+        run: |
+          if [ -f _data/cv.yml ] || [ -f _data/cv.yaml ]; then
+            echo "present=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "present=false" >> "$GITHUB_OUTPUT"
+            echo "No CV data found; skipping RenderCV."
+          fi
       - uses: actions/setup-python@v5
+        if: steps.cv_data.outputs.present == 'true'
         with:
           python-version: "3.12"
       - name: Install RenderCV
+        if: steps.cv_data.outputs.present == 'true'
         run: |
           pip install -r requirements.txt
       - name: RenderCV
+        if: steps.cv_data.outputs.present == 'true'
         run: |
           cv_file=$(find _data  -maxdepth 1 -type f \( -name "cv.yaml" -o -name "cv.yml" \))
           if [ -z "$cv_file" ]; then
@@ -47,11 +57,13 @@ jobs:
           rendercv render $cv_file --settings $settings
           rm assets/rendercv/rendercv_output/*.typ
       - name: Upload rendercv_output as an artifact
+        if: steps.cv_data.outputs.present == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: RenderCV Output
           path: assets/rendercv/rendercv_output
       - name: Push the changes
+        if: steps.cv_data.outputs.present == 'true'
         run: |
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
