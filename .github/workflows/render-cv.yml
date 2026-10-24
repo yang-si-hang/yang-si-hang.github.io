@@ -16,6 +16,8 @@ permissions:
 jobs:
   rendercv:
     name: RenderCV
+    # CV data is intentionally absent until the user supplies a real CV.
+    if: hashFiles('_data/cv.yml', '_data/cv.yaml') != ''
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
