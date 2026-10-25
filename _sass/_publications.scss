@@ -199,6 +199,34 @@
   }
 }
 
+// Keep media in blog article bodies centered without affecting site chrome,
+// publication previews, or blog index thumbnails.
+.post-content {
+  img,
+  video,
+  audio,
+  iframe {
+    display: block;
+    margin-inline: auto;
+  }
+
+  img,
+  video,
+  iframe {
+    max-width: 100%;
+  }
+
+  img,
+  video {
+    height: auto;
+  }
+
+  figure {
+    margin-inline: auto;
+    text-align: center;
+  }
+}
+
 .citation,
 .citation-number {
   color: var(--global-theme-color);
