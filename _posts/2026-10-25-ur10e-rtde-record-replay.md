@@ -6,6 +6,9 @@ date: 2026-10-25 00:00:00 +0900
 description: 通过 UR10e 录制与回放实验，分析高频控制事件被抽取为低频 dataset action 后，时间作用范围与执行解释发生的变化，并用典型的 300 Hz 推理式插值检验这种变化。
 tags: robotics data control ur10e rtde
 categories: tech
+mermaid:
+  enabled: true
+  zoomable: true
 ---
 
 机器人数据集经常同时面对两种频率：遥操作与底层控制需要较高频率，图像采集、数据存储和模型推理则通常运行得更慢。一个自然做法是对高频控制流等间隔抽样，让每个低频 observation 配上一条 action。
