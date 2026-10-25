@@ -129,7 +129,7 @@ shared VLM parameters
 separate FAST and FM VLM forwards
 +
 stop-gradient from FM into the VLM
-</code></pre></div></div> <p>The current experiments provide strong evidence that replacing the two VLM forwards with one shared canonical prefix changes the FAST optimization objective.</p> <p>They provide only weak, downstream-specific evidence about which serialization is more compatible with the released π0.5-base checkpoint, and they do not reveal the original π0.5 pretraining serialization.</p> <p>Finally, the higher flow-matching loss observed under KI should not immediately be interpreted as a failure of KI. Since KI changes both the gradient topology and the optimization constraints, it likely deserves its own hyperparameter study—especially the relative learning rates of the VLM and action expert.</p> </div> </article> <br> <hr> <br> <h2 class="text-3xl font-semibold mb-4 mt-12">Enjoy Reading This Article?</h2> <p class="mb-2">Here are some more articles you might like to read next:</p> <ul class="list-disc pl-7 my-3 space-y-2 marker:text-[var(--global-theme-color)]"> <li class="leading-relaxed"> <a class="underline decoration-1 hover:text-[var(--global-hover-color)]" href="/blog/2026/mcap-collect/">把不同频率的数据流写进同一个 MCAP</a> </li> <li class="leading-relaxed"> <a class="underline decoration-1 hover:text-[var(--global-hover-color)]" href="/blog/2026/rpent-deepseek-colorblock/">RPent + DeepSeek：让机械臂在仿真中学会抓取、堆叠与复用经验</a> </li> </ul> </div> </div> <footer class="fixed-bottom" role="contentinfo"> <div class="container mt-0"> © Copyright 2026 Sihang Yang. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. Photos from <a href="https://unsplash.com" target="_blank" rel="external nofollow noopener">Unsplash</a>. </div> </footer> <script>
+</code></pre></div></div> <p>The current experiments provide strong evidence that replacing the two VLM forwards with one shared canonical prefix changes the FAST optimization objective.</p> <p>They provide only weak, downstream-specific evidence about which serialization is more compatible with the released π0.5-base checkpoint, and they do not reveal the original π0.5 pretraining serialization.</p> <p>Finally, the higher flow-matching loss observed under KI should not immediately be interpreted as a failure of KI. Since KI changes both the gradient topology and the optimization constraints, it likely deserves its own hyperparameter study—especially the relative learning rates of the VLM and action expert.</p> </div> </article> <br> <hr> <br> <h2 class="text-3xl font-semibold mb-4 mt-12">Enjoy Reading This Article?</h2> <p class="mb-2">Here are some more articles you might like to read next:</p> <ul class="list-disc pl-7 my-3 space-y-2 marker:text-[var(--global-theme-color)]"> <li class="leading-relaxed"> <a class="underline decoration-1 hover:text-[var(--global-hover-color)]" href="/blog/2026/ur10e-rtde-record-replay/">从 500 Hz 控制到 30 Hz 数据集：Action 降采样如何改变控制语义</a> </li> <li class="leading-relaxed"> <a class="underline decoration-1 hover:text-[var(--global-hover-color)]" href="/blog/2026/mcap-collect/">把不同频率的数据流写进同一个 MCAP</a> </li> <li class="leading-relaxed"> <a class="underline decoration-1 hover:text-[var(--global-hover-color)]" href="/blog/2026/rpent-deepseek-colorblock/">RPent + DeepSeek：让机械臂在仿真中学会抓取、堆叠与复用经验</a> </li> </ul> </div> </div> <footer class="fixed-bottom" role="contentinfo"> <div class="container mt-0"> © Copyright 2026 Sihang Yang. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. Photos from <a href="https://unsplash.com" target="_blank" rel="external nofollow noopener">Unsplash</a>. </div> </footer> <script>
   window.alFolio = {
     compatBootstrap: true
   };
@@ -168,7 +168,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/projects/";
           },
-        },{id: "post-把不同频率的数据流写进同一个-mcap",
+        },{id: "post-从-500-hz-控制到-30-hz-数据集-action-降采样如何改变控制语义",
+        
+          title: "从 500 Hz 控制到 30 Hz 数据集：Action 降采样如何改变控制语义",
+        
+        description: "通过 UR10e 录制与回放实验，分析高频控制事件被抽取为低频 dataset action 后，时间作用范围与执行解释发生的变化，并用典型的 300 Hz 推理式插值检验这种变化。",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/ur10e-rtde-record-replay/";
+          
+        },
+      },{id: "post-把不同频率的数据流写进同一个-mcap",
         
           title: "把不同频率的数据流写进同一个 MCAP",
         
